@@ -1,68 +1,211 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* padding, margin */
+  --gap-4xs: 2px;
+  --gap-3xs: 4px;
+  --gap-2xs: 6px;
+  --gap-xs: 8px;
+  --gap-s: 12px;
+  --gap-m: 16px;
+  --gap-l: 20px;
+  --gap-xl: 24px;
+  --gap-2xl: 32px;
+  --gap-3xl: 40px;
+  --gap-4xl: 48px;
+  --gap-5xl: 64px;
+  --gap-6xl: 72px;
+  --gap-7xl: 96px;
+  --gap-8xl: 128px;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* padding, margin negative */
+  --gap-4xs-neg: -2px;
+  --gap-3xs-neg: -4px;
+  --gap-2xs-neg: -6px;
+  --gap-xs-neg: -8px;
+  --gap-s-neg: -12px;
+  --gap-m-neg: -16px;
+  --gap-l-neg: -20px;
+  --gap-xl-neg: -24px;
+  --gap-2xl-neg: -32px;
+  --gap-3xl-neg: -40px;
+  --gap-4xl-neg: -48px;
+  --gap-5xl-neg: -64px;
+  --gap-6xl-neg: -72px;
+  --gap-7xl-neg: -96px;
+  --gap-8xl-neg: -128px;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* font-weight */
+  --regular: 400;
+  --semi-bold: 500;
+  --bold: 600;
+  --extra-bold: 700;
+
+  /* font-size */
+  --font-2xs: 8px;
+  --font-xs: 10px;
+  --font-s: 12px;
+  --font-xm: 14px;
+  --font-m: 16px;
+  --font-ml: 18px;
+  --font-l: 20px;
+  --font-xl: 24px;
+  --font-2xl: 32px;
+  --font-4xl: 48px;
+
+  /* line-height */
+  --line-m: 16px;
+  --line-l: 20px;
+  --line-xl: 24px;
+  --line-2xl: 32px;
+  --line-3xl: 40px;
+  --line-5xl: 64px;
+
+  /* border-radius */
+  --border-radius-xs: 2px;
+  --border-radius-s: 4px;
+  --border-radius-sm: 6px;
+  --border-radius-m: 8px;
+  --border-radius-l: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-xxl: 20px;
+  --border-radius-3xl: 24px;
+  --border-radius-circle: 50%;
+  --border-radius-pill: 99px;
+
+  /* ant-colors https://ant.design/docs/spec/colors */
+  --color-gold-1: #fffbe6;
+  --color-red-7: #f5d4d5;
+  --color-red-6: #f5222d;
+  --color-red-4: #ff7875;
+  --color-red-3: #ff4d4f;
+  --color-red-2: #ffa39e;
+  --color-red-1: #ef9d99;
+  --color-orange: #fa8c16;
+  --color-green: #52c41a;
+  --color-volcano-2: #ffd8bf;
+  --color-volcano-6: #fa541c;
+  --color-blue-1: #e6f4ff;
+  --color-blue-3: #91caff;
+  --color-blue-4: #69b1ff;
+  --color-blue-5: #bae0ff;
+  --color-blue-6: #1677ff;
+  --color-blue-7: #4096ff;
+  --color-gray-2: #fafafa;
+  --color-gray-3: #f5f5f5;
+  --color-gray-4: #f0f0f0;
+  --color-gray-5: #d9d9d9;
+  --color-gray-6: #bfbfbf;
+  --color-gray-7: #8c8c8c;
+  --color-white: rgba(255, 255, 255, 1);
+  --color-white-25: rgba(255, 255, 255, 0.25);
+  --color-black-1: #2e2e2e;
+  --color-black-02: rgba(0, 0, 0, 0.02);
+  --color-black-04: rgba(0, 0, 0, 0.04);
+  --color-black-06: rgba(0, 0, 0, 0.06);
+  --color-black-07: rgba(0, 0, 0, 0.07);
+  --color-black-08: rgba(0, 0, 0, 0.08);
+  --color-black-1: rgba(0, 0, 0, 0.1);
+  --color-black-15: rgba(0, 0, 0, 0.15);
+  --color-black-25: rgba(0, 0, 0, 0.25);
+  --color-black-35: rgba(0, 0, 0, 0.35);
+  --color-black-45: rgba(0, 0, 0, 0.45);
+  --color-black-85: rgba(0, 0, 0, 0.85);
+  --color-black-88: rgba(0, 0, 0, 0.88);
+
+  /* ant tooltip z-index = 1070 */
+  --z-index-max: 1071;
+
+  /* transitions */
+  --transition-duration-default: 0.2s;
+  --transition-function-default: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --animation-duration-default: 0.5s;
+
+  /* theme variables */
+  --height-header: var(--gap-4xl);
+  --color-bg-container: var(--color-white);
+  --color-control-outline: var(--color-blue-1);
+  --color-primary-base: var(--color-blue-6);
+  --color-warning: #faad14;
+  --color-error: var(--color-red-3);
+  --color-remove-line: #a8a8a8;
+  --color-text: var(--color-black-88);
+  --color-link-hover: var(--color-blue-4);
+  --color-text-disabled: var(--color-black-25);
+  --color-text-placeholder: var(--color-black-25);
+  --color-border: var(--color-black-15);
+  --color-alter: var(--color-black-02);
+  --color-warning-bg: rgba(255, 251, 230, 1);
+  --color-warning-bg-hover: rgba(255, 241, 184, 1);
+  --color-warning-base: rgba(250, 173, 20, 1);
+
+  --color-text-description: var(--color-black-45);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-color: var(--color-border) var(--color-border);
+  scrollbar-width: thin;
 }
 
 body {
+  position: relative;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: var(--bold);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+h5 {
+  font-size: var(--font-m);
+  line-height: 1.5;
+}
+
+*::-webkit-scrollbar {
+  width: var(--gap-3xs);
+  height: var(--gap-3xs);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--border-radius-xl);
+}
+
+/*remove blue autofill background in chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  transition: background-color 50000s ease-in-out 50000s;
+  box-shadow: inset 0 0 20px 20px var(--color-white);
+}
+
+input:-webkit-autofill:disabled {
+  box-shadow: inset 0 0 20px 20px var(--color-black-04);
 }
