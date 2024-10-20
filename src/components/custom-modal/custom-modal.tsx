@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Form, Input, InputNumber } from 'antd';
+import { addRoomToFirestore } from '../../firebase/rooms';
 
 interface ReusableModalProps {
   open: boolean;
@@ -14,12 +15,17 @@ export const CustomModal: React.FC<ReusableModalProps> = ({ open, title, onCance
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
+      await addRoomToFirestore(values);
       onSubmit(values);
       form.resetFields();
     } catch (error) {
       console.error('Form validation failed:', error);
     }
   };
+
+  const afterClose = () => {
+    form.resetFields();
+  }
 
   return (
     <Modal
@@ -29,6 +35,7 @@ export const CustomModal: React.FC<ReusableModalProps> = ({ open, title, onCance
       onOk={handleOk}
       okText="Добавить"
       cancelText="Отмена"
+      afterClose={afterClose}
     >
       <Form form={form} layout="vertical">
         <Form.Item
@@ -38,26 +45,14 @@ export const CustomModal: React.FC<ReusableModalProps> = ({ open, title, onCance
         >
           <Input placeholder="Введите название номера" />
         </Form.Item>
-        
-        <Form.Item label="Количество мест:">
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Form.Item
-              name="adults"
-              label="Взрослые:"
-              style={{ marginBottom: 0, flex: 1, marginRight: '8px' }}
-              rules={[{ required: true, message: 'Введите количество взрослых' }]}
-            >
-              <InputNumber style={{ width: '100%' }} min={0} placeholder="Введите взрослых" />
-            </Form.Item>
-            <Form.Item
-              name="children"
-              label="Дети:"
-              style={{ marginBottom: 0, flex: 1 }}
-              rules={[{ required: true, message: 'Введите количество детей' }]}
-            >
-              <InputNumber style={{ width: '100%' }} min={0} placeholder="Введите детей" />
-            </Form.Item>
-          </div>
+
+        <Form.Item
+          name="seats"
+          label="Количество мест:"
+          style={{ flex: 1, marginRight: '8px' }}
+          rules={[{ required: true, message: 'Введите количество взрослых' }]}
+        >
+          <InputNumber style={{ width: '100%' }} min={0} placeholder="Введите взрослых" />
         </Form.Item>
 
         <Form.Item
